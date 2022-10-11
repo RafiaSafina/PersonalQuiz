@@ -36,7 +36,7 @@ class QuestionViewController: UIViewController {
     private var currentAnswers: [Answer] {
         questions[questionIndex].answer
     }
-    private var choosenAnswers: [Answer] = []
+    private var chosenAnswers: [Answer] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +46,7 @@ class QuestionViewController: UIViewController {
     @IBAction func singleAnswerButtonTapped(_ sender: UIButton) {
         guard let buttonIndex = singleAnswerButtons.firstIndex(of: sender) else {return}
         let currentAnswer = currentAnswers[buttonIndex]
-        choosenAnswers.append(currentAnswer)
+        chosenAnswers.append(currentAnswer)
         
         nextQuestion()
     }
@@ -54,7 +54,7 @@ class QuestionViewController: UIViewController {
     @IBAction func multipleAnswerButtonPressed() {
         for (multipleSwitch, answer) in zip(multipleSwitches, currentAnswers) {
             if multipleSwitch.isOn {
-                choosenAnswers.append(answer)
+                chosenAnswers.append(answer)
             }
         }
         nextQuestion()
@@ -62,9 +62,15 @@ class QuestionViewController: UIViewController {
     
     @IBAction func rangedAnswerButtonPressed() {
         let index = lrintf(rangedSlider.value)
-        choosenAnswers.append(currentAnswers[index])
+        chosenAnswers.append(currentAnswers[index])
         
         nextQuestion()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let resultVC = segue.destination as? ResultViewController else {return}
+        
+        resultVC.chosenAnswers = chosenAnswers
     }
 }
 

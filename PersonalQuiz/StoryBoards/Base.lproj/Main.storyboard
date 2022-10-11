@@ -355,6 +355,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="descriptionResultLabel" destination="aho-li-bWj" id="MCO-v6-gxj"/>
+                        <outlet property="resultLabel" destination="7ce-KH-lkc" id="iFt-Uk-KVy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iFZ-nd-Ish" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
