@@ -15,5 +15,9 @@ class ResultViewController: UIViewController {
        
     }
     
-
+    @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
+        navigationController?.dismiss(animated: true)
+    }
+    
+    
 }

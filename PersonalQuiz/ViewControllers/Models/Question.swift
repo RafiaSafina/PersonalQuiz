@@ -13,7 +13,7 @@ struct Question {
     let responseType: ResponseType
     let answer: [Answer]
     
-    static func question() -> [Question] {
+    static func getQuestion() -> [Question] {
         [
             Question(
                 title: "What food do you prefer?",
@@ -37,7 +37,7 @@ struct Question {
             ),
             Question(
                 title: "Do you like rude in a car?",
-                responseType: .single,
+                responseType: .ranged,
                 answer: [
                     Answer(title: "very much", animal: .dog),
                     Answer(title: "do like", animal: .cat),
